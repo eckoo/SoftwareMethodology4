@@ -11,6 +11,8 @@ public class Constants {
 	public static final double baseCakeDonutPrice = 1.79;
 	public static final double baseDonutHolePrice = 0.39;
 	
+	public static final double SALES_TAX = 0.06625;
+	
 	public static final String SHORT = "short";
 	public static final String TALL = "tall";
 	public static final String GRANDE = "grande";

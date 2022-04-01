@@ -1,4 +1,4 @@
-package application;
+package DonutsAndCoffee;
 
 public enum Donuts {
 	/**

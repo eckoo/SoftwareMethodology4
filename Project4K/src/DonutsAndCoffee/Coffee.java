@@ -1,6 +1,12 @@
-package application;
+package DonutsAndCoffee;
+
+import java.util.ArrayList;
+import application.Constants;
 
 public class Coffee extends MenuItem implements Customizable {
+	protected ArrayList<CoffeeAddIns> addins = new ArrayList<CoffeeAddIns>();
+	protected double price;
+	protected Size size;
 
 	@Override
 	public boolean add(Object obj) {
@@ -13,5 +19,7 @@ public class Coffee extends MenuItem implements Customizable {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	
 
 }
