@@ -13,12 +13,12 @@ public class Constants {
 	
 	public static final double SALES_TAX = 0.06625;
 	
-	public static final String SHORT = "short";
-	public static final String TALL = "tall";
-	public static final String GRANDE = "grande";
-	public static final String VENTI = "venti";
+	public static final String SHORT = "Short";
+	public static final String TALL = "Tall";
+	public static final String GRANDE = "Grande";
+	public static final String VENTI = "Venti";
 	
-	public static final String CAKE = "cake donut";
-	public static final String YEAST = "yeast donut";
-	public static final String HOLE = "donut hole";
+	public static final String CAKE = "Cake";
+	public static final String YEAST = "Yeast";
+	public static final String HOLE = "Hole";
 }
