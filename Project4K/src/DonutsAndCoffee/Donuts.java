@@ -14,12 +14,6 @@ public class Donuts extends MenuItem implements Customizable {
 		super(itemType);
 		// TODO Auto-generated constructor stub
 	}
-
-	/*
-	public Donuts(String donutType, Size size2, ArrayList<DonutFlavors> flavor2) {
-		// TODO Auto-generated constructor stub
-	}
-	 */
 	
 	@Override
 	public boolean add(Object obj) {

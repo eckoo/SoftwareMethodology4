@@ -80,7 +80,7 @@ public class Order implements Customizable {
 	 * Not quite sure what to do with the interface methods below.
 	 */
 	
-	
+	//if obj.instanceOf(Coffee or donut)
 	@Override
 	public boolean add(Object obj) {
 		// TODO Auto-generated method stub

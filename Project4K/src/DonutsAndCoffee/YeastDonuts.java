@@ -7,13 +7,14 @@ public class YeastDonuts extends MenuItem {
 	protected String type = "yeast";
 	protected ArrayList<DonutFlavors> flavor = new ArrayList<DonutFlavors>();
 	//might have to put quantity field in here somewhere
-	public YeastDonuts(String type, ArrayList<DonutFlavors> flavor) {
+	public YeastDonuts(String type, ArrayList<DonutFlavors> flavor, int quantity) {
 		super(type, flavor);
 		this.donutType = type;
 		this.Flavor = flavor;
 		this.price = calculatePrice();	
 	}
-	
+
+
 	public double calculatePrice() {
 		double price = Constants.baseYeastDonutPrice;
 		

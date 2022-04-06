@@ -15,6 +15,8 @@ public class DonutHoles extends MenuItem {
 	 * 
 	 */
 	protected ArrayList<DonutFlavors> flavor = new ArrayList<DonutFlavors>();
+	
+	protected int quantity;
 
 	/**
 	 * 
@@ -22,10 +24,10 @@ public class DonutHoles extends MenuItem {
 	 * @param flavor
 	 */
 	public DonutHoles(String type, ArrayList<DonutFlavors> flavor, int quantity) {
-		super(type, flavor);
+		super(type, flavor, quantity);
 		this.donutType = type;
 		this.Flavor = flavor;
-		this.price = calculatePrice() * quantity;	
+		this.price = calculatePrice();
 	}
 	
 	/**
@@ -34,6 +36,7 @@ public class DonutHoles extends MenuItem {
 	 */
 	public double calculatePrice() {
 		double price = Constants.baseDonutHolePrice;
+		price = price * quantity;
 		String output = String.format("%,.2f", price);
 		price = Double.parseDouble(output);
 		return price;

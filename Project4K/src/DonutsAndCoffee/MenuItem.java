@@ -22,11 +22,23 @@ public class MenuItem {
 
 	public MenuItem(Size SIZE, ArrayList<CoffeeAddIns> ADDINS) {
 		//return coffee order with size and addins
+		this.size = SIZE;
+		this.AddIns = ADDINS;
 	}
 
 
 	public MenuItem(String type, ArrayList<DonutFlavors> flavor) {
 		// TODO Auto-generated constructor stub
+		this.donutType = type;
+		this.Flavor = flavor;
+	}
+
+
+	public MenuItem(String type, ArrayList<DonutFlavors> flavor, int quantity) {
+		// TODO Auto-generated constructor stub
+		this.donutType = type;
+		this.Flavor = flavor;
+		this.quantity = quantity;
 	}
 
 

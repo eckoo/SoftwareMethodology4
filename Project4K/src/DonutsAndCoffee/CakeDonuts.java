@@ -8,7 +8,7 @@ public class CakeDonuts extends MenuItem {
 	protected String type = "Cake";
 	protected ArrayList<DonutFlavors> flavor = new ArrayList<DonutFlavors>();
 	//might have to put quantity field in here somewhere
-	public CakeDonuts(String type, ArrayList<DonutFlavors> flavor) {
+	public CakeDonuts(String type, ArrayList<DonutFlavors> flavor, int quantity) {
 		super(type, flavor);
 		this.donutType = type;
 		this.Flavor = flavor;
