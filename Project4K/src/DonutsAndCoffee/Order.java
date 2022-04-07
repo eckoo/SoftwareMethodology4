@@ -5,10 +5,31 @@ import java.util.ArrayList;
 import application.Constants;
 
 public class Order implements Customizable {
-	private String phoneNumber; //not really any documentation in project doc as to how we identify the customer, 
+	
+	/**
+	 * Creates phoneNumber Object of type String to identify customer.
+	 */
+	protected String phoneNumber; //not really any documentation in project doc as to how we identify the customer, 
 								// so lets use a phone number
-	private ArrayList<Coffee> order = new ArrayList<Coffee>();
-	private double totalPrice;
+	/**
+	 * Creates coffeeOrder Object of type ArrayList<Coffee>.
+	 */
+	protected ArrayList<Coffee> coffeeOrder = new ArrayList<Coffee>();
+	
+	/**
+	 * Creates donutsOrder Object of type ArrayList<Donuts>.
+	 */
+	protected ArrayList<Donuts> donutsOrder = new ArrayList<Donuts>();
+	
+	/**
+	 * Creates order Object of type ArrayList<MenuItem>.
+	 */
+	protected ArrayList<MenuItem> order = new ArrayList<MenuItem>();
+	
+	/**
+	 * Creates totalPrice Object of type double.
+	 */
+	protected double totalPrice;
 	
 	/**
 	 * Constructor class for the Order method.
@@ -25,29 +46,16 @@ public class Order implements Customizable {
 	 */
 	private double CalculatePrice() {
 		double currentPrice = 0;
-		for(Coffee c : order) {
+		for(Coffee c : coffeeOrder) {
 			currentPrice += c.price;
+		}
+		for(Donuts d : donutsOrder) {
+			currentPrice += d.price;
 		}
 		currentPrice += currentPrice * Constants.SALES_TAX;
 		String updatedPrice = String.format("%,.2f", currentPrice);
-		currentPrice = Double.parseDouble(updatedPrice);
-		return currentPrice;
-	}
-	
-	/**
-	 * This is the method for adding a coffee to an order.
-	 * @param coffee Object of type Coffee.
-	 */
-	public void addCoffee(Coffee coffee) {
-		order.add(coffee);
-	}
-	
-	/**
-	 * This is the method for removing coffee from an order.
-	 * @param coffee Object of type Coffee.
-	 */
-	public void removeCoffee(Coffee coffee) {
-		order.remove(coffee);
+		totalPrice = Double.parseDouble(updatedPrice);
+		return totalPrice;
 	}
 	
 	/**
@@ -67,29 +75,38 @@ public class Order implements Customizable {
 	}
 	
 	/**
-	 * This returns the order itself.
+	 * This returns the coffee order itself.
 	 * @return the current order.
 	 */
-	public ArrayList<Coffee> getOrder() {
-		return this.order;
+	public ArrayList<Coffee> getCoffeeOrder() {
+		return this.coffeeOrder;
 	}
 	
-	
+	/**
+	 * This reutnrs the donuts order itself.
+	 * @return the current order.
+	 */
+	public ArrayList<Donuts> getDonutsOrder() {
+		return this.donutsOrder;
+	}
 	
 	/**
-	 * Not quite sure what to do with the interface methods below.
+	 * This is the method for adding 
+	 * @param obj Object of type Object.
 	 */
-	
-	//if obj.instanceOf(Coffee or donut)
 	@Override
 	public boolean add(Object obj) {
-		// TODO Auto-generated method stub
+		
 		return false;
 	}
 
+	/**
+	 * This is the method for removing 
+	 * @param obj Object of type Object.
+	 */
 	@Override
 	public boolean remove(Object obj) {
-		// TODO Auto-generated method stub
+		
 		return false;
 	}
 

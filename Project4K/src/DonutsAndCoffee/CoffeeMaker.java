@@ -5,6 +5,12 @@ import application.Constants;
 
 public class CoffeeMaker {
 	
+	/**
+	 * createCofee creates the current order's coffee.
+	 * @param size Object of type Size.
+	 * @param addins Object of type ArrayList<CoffeeAddIns>
+	 * @return current coffee object.
+	 */
 	public static Coffee createCoffee(Size size, ArrayList<CoffeeAddIns> addins) {
 		Coffee coffee = null;
 		if(size.equals(Constants.SHORT)) {
