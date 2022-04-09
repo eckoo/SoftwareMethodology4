@@ -1,147 +1,178 @@
 package DonutsAndCoffee;
 
 import java.util.ArrayList;
-import application.Constants;
+import java.util.Arrays;
+import java.util.List;
 
+/**
+ * This class holds properties of Coffee objects.
+ *
+ * @author Kiernan King and Ahmed Alghazwi
+ */
 public class Coffee extends MenuItem implements Customizable {
 
 	/**
-	 * Creates addins Object of type ArrayList<CoffeeAddIns>
+	 * Creates COFFEE_PRICE_DEFAULT Object of type double.
 	 */
-	protected ArrayList<CoffeeAddIns> addins = new ArrayList<CoffeeAddIns>();
-	
-	/**
-	 * Creates order Object of type Coffee.
-	 */
-	protected ArrayList<Coffee> order = new ArrayList<Coffee>();
-	
-	/**
-	 * Creates price Object of type double.
-	 */
-	protected double price;
-	
-	/**
-	 * Creates size Object of type Size.
-	 */
-	protected Size size;
-	
-	/**
-	 * Creates itemType Object to denote it is a coffee.
-	 */
-	protected String itemType = "Coffee";
-	
-	/**
-	 * Coffee constructor.
-	 * @param size Object of type Size.
-	 * @param addins Object of type ArrayList<CoffeeAddIns>
-	 * @param itemType Object of type String.
-	 * @param order Object of type ArrayList<Coffee>
-	 */
-	public Coffee(Size size, ArrayList<CoffeeAddIns> addins, String itemType, ArrayList<Coffee> order) {
-		super(size, addins, itemType, order);
-		this.size = size;
-		this.AddIns = addins;
-		this.price = itemPrice();
-		this.order = order;
-		
-		// TODO Auto-generated constructor stub
-	}
-	
-	/**
-	 * Coffee constructor method.
-	 * @param size Object of type size.
-	 * @param addins Object of type ArrayList<CoffeeAddIns>
-	 */
-	public Coffee(Size size, ArrayList<CoffeeAddIns> addins) {
-		super(size, addins);
-		this.size = size;
-		this.addins = addins;
-	}
+    private static final double COFFEE_PRICE_DEFAULT = 1.69;
+    
+    /**
+     * Creates PRICE_PER_ADD_IN Object of type double.
+     */
+    private static final double PRICE_PER_ADD_IN = 0.30;
+    
+    /**
+     * Creates PRICE_PER_SIZE_UP Object of type double.
+     */
+    private static final double PRICE_PER_SIZE_UP = 0.40;
 
-	/**
-	 * itemPrice calculates the current price.
-	 * @return price Object of type double.
-	 */
-	@Override
-	public double itemPrice() {
-		double price = Constants.baseCoffeePrice;
-		if(size.name().equals(Constants.SHORT.toUpperCase())) {
-			price += 0;
-		}
-		else if(size.name().equals(Constants.TALL.toUpperCase())) {
-			price += Constants.tallSizePriceIncrease;
-		}
-		else if(size.name().equals(Constants.GRANDE.toUpperCase())) {
-			price += Constants.grandeSizePriceIncrease;
-			
-		}
-		else if(size.name().equals(Constants.VENTI.toUpperCase())) {
-			price += Constants.ventiSizePriceIncrease;
-		}
-		String out = String.format("%,.2f", price);
-		price = Double.parseDouble(out);
-		return price;
-	}
-	
-	/**
-	 * updateAddIns is a constructor method to update addins.
-	 */
-	public void updateAddIns(ArrayList<CoffeeAddIns> addins) {
-		this.AddIns = addins; 
-		this.price = itemPrice();
-	}
-	
-	/**
-	 * getAddIns returns the current addins.
-	 * @return current list of AddIns.
-	 */
-	public ArrayList<CoffeeAddIns> getAddIns() {
-		return this.AddIns;
-	}
-	
-	/**
-	 * getSize constructor method.
-	 * @return the current size.
-	 */
-	public Size getSize() {
-		return this.size;
-	}
-	
-	/**
-	 * toString returns a string representation of the current order.
-	 * @return output Object of type String.
-	 */
-	public String toString() {
-		String output = "";
-		output += itemType + ":" + size.name() + ":Add-Ins" + addins.toString() + ":Price[" + String.valueOf(price) + "]";
-		return output;
-	}
+    /**
+     * Creates SIZE Object of type String[].
+     */
+    public static final String[] SIZE = {"Short", "Tall", "Grande", "Venti"};
+    
+    /**
+     * Creates ADDIN Objet of type String[].
+     */
+    public static final String[] ADDIN = {"Cream", "Milk", "WhippedCream", "Syrup", "Caramel"};
 
+    /**
+     * Creates size Object of type String.
+     */
+    private String size;
+    
+    /**
+     * Creates addIns Object of type List String.
+     */
+    private List<String> addIns;
 
-	/**
-	 * This is the method for adding a coffee to an order.
-	 * @param obj Object of type Object.
-	 */
-	@Override
-	public boolean add(Object obj) {
-		if(obj instanceof Coffee) {
-			order.add((Coffee) obj);
-		}
-		return false;
-	}
+    /**
+     * Coffee constructor.
+     * @param size Object of type String.
+     * @param addIns Object of type List String.
+     * @param quantity Object of type int.
+     */
+    public Coffee(String size, List<String> addIns, int quantity) {
+        super(quantity, 0.0);
+        int sizeNum = Arrays.asList(SIZE).indexOf(size);
+        double clcPrice = COFFEE_PRICE_DEFAULT + sizeNum * PRICE_PER_SIZE_UP + addIns.size() * PRICE_PER_ADD_IN;
+        setPrice(clcPrice);
+        this.size = size;
+        this.addIns = addIns;
+    }
 
-	/**
-	 * This is the method for removing coffee from an order.
-	 * @param obj Object of type Object.
-	 */
-	@Override
-	public boolean remove(Object obj) {
-		if(obj instanceof Coffee) {
-			order.remove((Coffee) obj);
-		}
-		return false;
-	}
-	
-	
+    /**
+     * Coffee constructor.
+     * @param size Object of type String.
+     * @param quantity Object of type int.
+     */
+    public Coffee(String size, int quantity) {
+        super(quantity, 0.0);
+        addIns = new ArrayList<>();
 
+        setPrice(itemPrice());
+        this.size = size;
+        this.addIns = new ArrayList<>();
+    }
+
+    /**
+     * Sets the size of a Coffee object.
+     *
+     * @param newSize the desired size
+     */
+    public void setSize(String newSize) {
+        this.size = newSize;
+    }
+
+    /**
+     * A method that calculates and returns the price of the item.
+     *
+     * @return current item price.
+     */
+    @Override
+    public double itemPrice() {
+        int sizeNum = Arrays.asList(SIZE).indexOf(size);
+        return (COFFEE_PRICE_DEFAULT + sizeNum * PRICE_PER_SIZE_UP + addIns.size() * PRICE_PER_ADD_IN)
+                * super.getQuantity();
+    }
+
+    /**
+     * A method that adds add-ins to a Coffee Object.
+     *
+     * @param obj object to be added to the add-ins for Coffee
+     * @return true if add-in successful, false if not.
+     */
+    @Override
+    public boolean add(Object obj) {
+        if (obj instanceof String) {
+            String addIn = (String) obj;
+            if (Arrays.asList(ADDIN).contains(addIn)) {
+                addIns.add(addIn);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * A method that removes add-ins from a Coffee object.
+     *
+     * @param obj object to be added
+     * @return true if add-in removed, false if not.
+     */
+    @Override
+    public boolean remove(Object obj) {
+        if (obj instanceof String) {
+            String addIn = (String) obj;
+            return addIns.remove(addIn);
+        }
+        return false;
+    }
+
+    /**
+     * A method that checks if one coffee object is equal to another.
+     *
+     * @param obj Coffee object to be checked against
+     * @return true if equal, false if not
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Coffee) {
+            Coffee other = (Coffee) obj;
+
+            if (!this.size.equals(other.size)) {
+                return false;
+            }
+
+            if (this.addIns.size() != other.addIns.size()) {
+                return false;
+            }
+
+            for (String addIn : addIns) {
+                if (!other.addIns.contains(addIn)) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * This method returns the string representation of a Coffee object.
+     *
+     * @return String representation of Coffee object
+     */
+    @Override
+    public String toString() {
+        String myCoffee = "Coffee (" + this.getQuantity() + ") " + size;
+
+        if (addIns.size() > 0) {
+            myCoffee += addIns.toString();
+        }
+
+        return myCoffee;
+    }
 }

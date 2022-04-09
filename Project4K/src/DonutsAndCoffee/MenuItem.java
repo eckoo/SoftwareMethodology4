@@ -1,127 +1,104 @@
 package DonutsAndCoffee;
 
-import java.util.ArrayList;
+import java.text.DecimalFormat;
 
+/**
+ * This class holds the properties of an Object representing a Menu Item.
+ *
+ * @author Kiernan King and Ahmed Alghazwi
+ */
 public class MenuItem {
-	/**
-	 * Creates an AddIns Object of type ArrayList<CoffeeAddIns>.
-	 */
-	protected ArrayList<CoffeeAddIns> AddIns = new ArrayList<CoffeeAddIns>();
-	
-	/**
-	 * Creates Flavor Object of type ArrayList<DonutFlavors>.
-	 */
-	protected ArrayList<DonutFlavors> Flavor = new ArrayList<DonutFlavors>();
-	
-	/**
-	 * Creates order Object of type ArrayList<Coffee>.
-	 */
-	protected ArrayList<Coffee> coffeeOrder = new ArrayList<Coffee>();
-	
-	/**
-	 * 
-	 */
-	protected ArrayList<Donuts> donutsOrder = new ArrayList<Donuts>();
-	
-	/**
-	 * Creates donutType Object of type String.
-	 */
-	protected String donutType;
-	
-	/**
-	 * Creates itemType Object of type String.
-	 */
-	protected String itemType;
-	
-	/**
-	 * Creates size Object of type Size.
-	 */
-	protected Size size;
-	
+
 	/**
 	 * Creates price Object of type double.
 	 */
-	protected double price;
-	
-	/**
-	 * Creates quantity Object of type int.
-	 */
-	protected int quantity;
-	
-	/**
-	 * itemPrice is a constructor method that returns the current order's price.
-	 * @return price Object of type double.
-	 */
-	public double itemPrice() {
-		return price;
-	}
-	
-	/**
-	 * MenuItem is a constructor method.
-	 * @param itemType Object of type String.
-	 */
-	public MenuItem(String itemType) {
-		this.itemType = itemType;
-	}
+    private double price;
+    
+    /**
+     * Creates quantity Object of type int.
+     */
+    private int quantity;
 
-	/**
-	 * MenuItem is also a constructor method.
-	 * @param itemType 
-	 * @param SIZE Object of type Size
-	 * @param ADDINS Object of type 
-	 */
-	public MenuItem(Size size, ArrayList<CoffeeAddIns> AddIns, String itemType, ArrayList<Coffee> order) {
-		//return coffee order with size and addins
-		this.size = size;
-		this.AddIns = AddIns;
-		this.itemType = itemType;
-		this.coffeeOrder = order;
-	}
+    /**
+     * The default constructor for an instance of the menu item class.
+     */
+    public MenuItem() {
+    }
 
-	public MenuItem(String type, String itemType, ArrayList<Donuts> donutsOrder, ArrayList<DonutFlavors> flavor, int quantity) {
-		this.donutType = type;
-		this.Flavor = flavor;
-		this.quantity = quantity;
-		this.itemType = itemType;
-		this.donutsOrder = donutsOrder;
-	}
+    /**
+     * An overloaded constructor for an instance of the menu item class.
+     *
+     * @param itemPrice Object of type int.
+     * @param quantity Object of type double.
+     */
+    public MenuItem(int quantity, double itemPrice) {
+        this.price = itemPrice;
+        this.quantity = quantity;
+    }
 
-	public MenuItem(Size size, ArrayList<CoffeeAddIns> addins) {
-		this.size = size;
-		this.AddIns = addins;
-	}
+    /**
+     * This method calculates and returns the price of the item
+     *
+     * @return price, a double containing the price of the item
+     */
+    public double itemPrice() {
+        return this.price * this.quantity;
+    }
 
-	/**
-	 * getItemType returns the current item's type.
-	 * @return itemType Object of type String.
-	 */
-	public String getItemType() {
-		return itemType;
-	}
-	
-	/**
-	 * updateSize is a constructor method that updates current order size.
-	 * @param size Object of type Size.
-	 */
-	public void updateSize(Size size) {
-		this.size = size;
-	}
-	
-	/**
-	 * getSize is a constructor method that returns the current size.
-	 * @return size Object of type Size.
-	 */
-	public Size getSize() {
-		return size;
-	}
-	
-	/**
-	 * updateAddIns is a constructor method that updates the current addins in the coffee.
-	 * @param addins Object of type ArrayList<CoffeeAddIns>
-	 */
-	public void updateAddIns(ArrayList<CoffeeAddIns> addins) {
-		this.AddIns = addins;
-	}
-	
-	
+    /**
+     * This method sets the price of a menu item object.
+     *
+     * @param number Object of type double.
+     */
+    public void setPrice(double number) {
+        this.price = number;
+    }
+
+    /**
+     * This method fetches the price of a menu item object.
+     *
+     * @return price is the price of the Object.
+     */
+    public double getPrice() {
+        return this.price;
+    }
+
+    /**
+     * This method sets the quantity of a Menu Item object.
+     *
+     * @param number Object of type int.
+     */
+    public void setQuantity(int number) {
+        this.quantity = number;
+    }
+
+    /**
+     * This method fetches the quantity of a menu item object.
+     *
+     * @return quantity is the quantity of the object.
+     */
+    public int getQuantity() {
+        return this.quantity;
+    }
+
+    /**
+     * This method increments the quantity of a Menu Item Object.
+     *
+     * @param number Object of type int.
+     */
+    public void incrementQuantity(int number) {
+        this.quantity += number;
+    }
+
+    /**
+     * This uses the DecimalFormat class to format into dollar format.
+     *
+     * @param price Object of type double.
+     * @return a String representation of the formatted price.
+     */
+    public static String formatPrice(double price) {
+        DecimalFormat df = new DecimalFormat("$#,##0.00");
+        String formattedPay = df.format(price);
+        return formattedPay;
+    }
 }
