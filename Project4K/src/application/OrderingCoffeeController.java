@@ -99,7 +99,7 @@ public class OrderingCoffeeController implements Initializable {
         try {
             imageCoffe.setImage(new Image(new FileInputStream("Images/coffee.png")));
         } catch (FileNotFoundException e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
 
         cbCoffeeSize.getItems().addAll(Coffee.SIZE);

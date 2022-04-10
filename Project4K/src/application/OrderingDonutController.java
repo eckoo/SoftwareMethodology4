@@ -82,7 +82,7 @@ public class OrderingDonutController implements Initializable {
             Image image = new Image(inputstream);
             imgDonut.setImage(image);
         } catch (FileNotFoundException ex) {
-            System.out.println(ex);
+            ex.printStackTrace();
         }
         this.donutsList = new ArrayList<Donut>();
         this.cbDonutType.getItems().addAll("Yeast Donuts", "Cake Donuts", "Donut Holes");

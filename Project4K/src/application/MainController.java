@@ -57,7 +57,7 @@ public class MainController {
             imgStoreOrder.setImage(new Image(new FileInputStream("Images/clipboard.png")));
             imgYourOrder.setImage(new Image(new FileInputStream("Images/shopping-bag.png")));
         } catch (FileNotFoundException e) {
-            System.out.println(e);
+        	e.printStackTrace();
         }
 
     }
@@ -118,7 +118,6 @@ public class MainController {
             stage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println(e);
         }
     }
 }
